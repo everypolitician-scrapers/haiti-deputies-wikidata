@@ -3,9 +3,7 @@
 
 require 'wikidata/fetcher'
 
-pages = [
-  'Category:Members_of_the_Chamber_of_Deputies_(Haiti)'
-]
+en = WikiData::Category.new('Category:Members_of_the_Chamber_of_Deputies_(Haiti)', 'en').member_titles
+fr = WikiData::Category.new('Catégorie:Personnalité politique haïtienne', 'fr').member_titles
 
-names = pages.map { |c| WikiData::Category.new(c, 'en').member_titles }.flatten.uniq
-EveryPolitician::Wikidata.scrape_wikidata(names: { en: names })
+EveryPolitician::Wikidata.scrape_wikidata(names: { fr: fr, en: en })
